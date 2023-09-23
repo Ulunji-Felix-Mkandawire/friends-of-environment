@@ -1,0 +1,648 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* .....root-variables..... */
+:root{
+    --color-accent: #F3FFF3;
+    --color-primary: #033B2E;
+    --color-secondary: #E8FFEC;
+    --margin-top: 30px;
+}
+
+/* .....html-default-properties..... */
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/* .....general-body-default-properties..... */
+body{
+    background: var(--color-accent);
+    width: 100%;
+}
+
+/* .....header = logo, toggler, nav-links..... */
+.head-container{
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 10%;
+
+    position: relative;
+}
+
+.web-logo{
+    width: 60px;
+    height: 60px;
+    transition: all 250ms ease-in-out;
+}
+
+.web-logo:hover{
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.toggle-btn{
+    cursor: pointer;
+    display: none;
+}
+
+.bars{
+    background: var(--color-accent);
+    border-radius: 4px;
+    display: block;
+    height: 5px;
+    margin: 5px 0;
+    transition: all 250ms ease-in-out;
+    width: 35px;
+}
+
+.nav-links{
+    display: flex;
+}
+
+.nav-links li{
+    margin-inline: 30px;
+}
+
+.nav-links li a{
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 500ms ease-in-out;
+}
+
+.nav-links li a:hover{
+    filter: saturate(50);
+    font-size: 1.8rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+/* .....reset Bootstrap..... */
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+/* ....media-query 780px => header..... */
+@media (max-width: 768px){
+    .head-container{
+        padding: 2% 5%;
+        transition: all 250ms ease-in-out;
+    }
+
+    .toggle-btn{
+        display: block;
+        transition: all 250ms ease-in-out;
+    }
+    .toggle-btn.active .bars:nth-child(1){
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .toggle-btn.active .bars:nth-child(2){
+        opacity: 0;
+    }    
+
+    .toggle-btn.active .bars:nth-child(3){
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .nav-links{
+        background: var(--color-primary);
+        display: block;
+        flex-direction: column;
+        left: -100%;
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        padding: 0 5%;
+        transition: all 250ms ease-in-out;
+    }
+
+    .nav-links.active{
+        left: 0;
+        transition: all 250ms ease-in-out;
+    }
+
+    .nav-links li{
+        margin: 30px 0;
+        text-align: center;
+        transition: all 250ms ease-in-out;
+    }
+}
+
+/* ....media-query 425px => header..... */
+@media (max-width: 425px){
+    .nav-links li{
+        margin: 26px 0;
+        transition: all 250ms ease-in-out;
+    }
+}
+
+/* .....banner..... */
+.banner{
+    background: url(/n-foe-images/home-page-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    color: var(--color-accent);
+    font-family: serif;
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    text-align: center;
+    text-transform: uppercase;
+    animation-name: color-switcher;
+    animation-delay: 500ms;
+    animation-direction:  normal;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes color-switcher {
+    0%{
+        color: var(--color-accent);
+    }
+    25%{
+        color: #00ffff;
+    }
+    50%{
+        color: #033B2E;
+        /* font-size: 7rem; */
+    }
+    75%{
+        color: rgba(0, 116, 71, 0.76);
+    }
+    100%{
+        color: var(--color-accent);
+    }
+}
+
+/* ....media-query 780px => banner..... */
+@media (max-width: 768px){
+    .banner{
+        height: 50vh;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .title{
+        font-size: 5.5rem;
+        transition: all 250ms ease-in-out;
+    }    
+}
+
+/* ....media-query 540px => banner..... */
+@media (max-width: 540px){
+    .banner{
+        height: 40vh;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .title{
+        font-size: 4.5rem;
+        transition: all 250ms ease-in-out;
+    }    
+}
+
+/* ....media-query 375px => banner..... */
+@media (max-width: 375px){
+    .banner{
+        height: 40vh;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .title{
+        font-size: 3.5rem;
+        transition: all 250ms ease-in-out;
+    }    
+}
+
+/* .....main-section..... */
+.main-container{
+    padding: 0 10%;
+}
+
+.overview{
+    color: var(--color-primary);
+    font-family: serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-top: var(--margin-top);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.carousel-local-container{
+    margin-top: var(--margin-top);
+}
+
+.slide-container-1{
+    background: url(/n-foe-images/projects-page-energy-right.jpg);
+}
+
+.slide-container-2{
+    background: url(/n-foe-images/projects-banner.jpg);
+}
+
+.slide-container-3{
+    background: url(/n-foe-images/projects-page-safe-water-right.jpg);
+}
+
+.slide-container-1,
+.slide-container-2,
+.slide-container-3{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px var(--color-primary);
+    height: 500px;
+    width: 100%;
+}
+
+h5{
+    text-transform: uppercase;
+    font-size: 5rem;
+    font-family: serif;
+    color: var(--color-accent);
+    /* mix-blend-mode: overlay; */
+}
+
+.carousel-paragraph{
+    font-size: 2rem;
+}
+
+/* ....media-query 768px => carousel.... */
+@media (max-width: 768px){
+    .main-container{
+        padding: 0 5%;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .overview{
+        font-size: 4rem;
+        margin-top: 2.5rem;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .carousel-local-container{
+        margin-top: 2.5rem;
+        transition: all 250ms ease-in-out;
+    }
+    
+    .slide-container-1,
+    .slide-container-2,
+    .slide-container-3{
+        height: 400px;
+        transition: all 250ms ease-in-out;
+    }
+    
+    h5{
+        font-family: 2.5rem
+    }
+    .carousel-paragraph{
+        font-size: 1.8rem;
+    }
+
+}
+
+/* ....media-query 540px => carousel.... */
+@media (max-width: 540px){
+.main-container{
+    padding: 0 5%;
+    transition: all 250ms ease-in-out;
+}
+
+.overview{
+    font-size: 3rem;
+    margin-top: 2.5rem;
+    transition: all 250ms ease-in-out;
+}
+
+.carousel-local-container{
+    margin-top: 2.5rem;
+    transition: all 250ms ease-in-out;
+}
+
+.slide-container-1,
+.slide-container-2,
+.slide-container-3{
+    height: 250px;
+    transition: all 250ms ease-in-out;
+}
+}
+
+/* .....projects-section..... */
+.projects-container{
+    margin-top: var(--margin-top);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    grid-template-rows: repeat(2, minmax(0, auto));
+    grid-template-areas: 
+    "image1 image2"
+    "image3 image4";
+}
+
+.projects-image-1-container{
+    grid-area: image1;
+}
+
+.projects-image-2-container{
+    grid-area: image2;
+}
+
+.projects-image-3-container{
+    grid-area: image3;
+}
+
+.projects-image-4-container{
+    grid-area: image4;
+}
+
+.projects-image-1-container,
+.projects-image-2-container,
+.projects-image-3-container,
+.projects-image-4-container{
+    width: 100%;
+    height: 100%;
+}
+
+.projects-image-1,
+.projects-image-2,
+.projects-image-3,
+.projects-image-4{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: drop-shadow(0 1px 2px #000);
+}
+
+.projects-para{
+    background: var(--color-secondary);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #000;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-top: var(--margin-top);
+    padding: 10px;
+    text-align: justify;
+}
+/* ....media-query 540px => carousel.... */
+@media (max-width: 540px){
+    .projects-container{
+        margin-top: 2.5rem;
+        display: grid;
+        row-gap: 10px;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(4, minmax(0, auto));
+        grid-template-areas: 
+        "image1" 
+        "image2"
+        "image3" 
+        "image4";
+    }
+
+    .projects-para{
+        font-size: 2rem;
+        margin-top: 2.5rem;
+        text-align: left;
+    }
+}
+
+/* .....contact-section..... */
+.contact-container{
+    width: 100%;
+    height: 600px;
+    background: url(/n-foe-images/sustainable-energy.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-top: var(--margin-top);
+    filter: drop-shadow(0 1px 2px #000);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-inner-container{
+    width: 50%;
+    height: 50rem;
+    backdrop-filter: blur(10px);
+    border: 1px double #008000;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .....form..... */
+form{
+    font-size: 1.4rem;
+}
+.form-group{
+    padding: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+label{
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--color-accent);
+}
+
+input[type="text"],
+input[type="email"]{
+    outline: 0;
+    padding: 5px 5px;
+    border-radius: 4px;
+    width: 25rem;
+    border: 2px solid var(--accent-color);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus{
+    border-color: var(--primary-color);
+    outline: 0;
+}
+
+textarea{
+    width: 25rem;
+    outline: 0;
+    padding: 5px 5px;
+    resize: none;
+    border-radius: 4px;
+}
+
+.submit-btn{
+    background: none;
+    border-radius: 5px;
+    border: 2px solid var(--color-primary);
+    color: var(--color-accent);
+    padding: 5px 20px;
+    text-transform: uppercase;
+    transition: all 250ms ease-in-out;
+}
+
+.submit-btn:hover{
+    background: var(--color-primary);
+}
+
+/* .....media-query 768px = form..... */
+@media (max-width: 768px){
+    .contact-container{
+        width: 100%;
+        height: 500px;
+        border-radius: 5px;
+        margin-top: 2.5rem;
+        transition: all 250ms ease-in-out;
+    }
+
+    .contact-inner-container{
+        width: 50%;
+        height: 50rem;
+        backdrop-filter: blur(0px);
+        border: none;
+        border-radius: none;
+        transition: all 250ms ease-in-out;
+    }
+    .submit-btn{
+        background: var(--color-primary);
+        border-radius: 5px;
+        border: none;
+        color: var(--color-accent);
+        padding: 5px 20px;
+        text-transform: uppercase;
+        transition: all 250ms ease-in-out;
+    }
+    
+}
+
+
+.big-logo{
+    width: 100%;
+    margin-inline: auto;
+    margin-top: var(--margin-top);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-logo img{
+    width: 400px;
+    height: 400px;
+}
+
+h2{
+    text-transform: uppercase;
+    margin-top: var(--margin-top);
+}
+
+/* .....quick-media-query 540px..... */
+@media(max-width: 540px){
+    .big-logo{
+        margin-top: 2.5rem;
+    }
+
+    h2{
+        margin-top: 2.5rem;
+    }
+    .big-logo img{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* footer */
+.footer{
+    width: 100%;
+    min-height: 20vh;
+    background: var(--color-primary);
+    margin-top: 30px;
+    padding: 0 10%;
+}
+
+.footer-flex{
+    /* padding: 10px 0; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mail-us{
+    align-self: flex-start;
+}
+
+
+.footer-heading, 
+.send-mail{
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+.address-1,
+.mail-des{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--color-accent);
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+}
+
+.email-link{
+    color: var(--color-secondary);
+    text-transform: uppercase;
+}
+
+.copyright{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* .....footer-media-query..... */
+@media (max-width: 540px){
+    .footer{
+        padding: 0 5%;
+    }   
+}
